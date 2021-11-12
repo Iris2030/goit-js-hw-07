@@ -16,22 +16,16 @@ return items.map(({ preview, original, description }) => {
  
 </div>`
 
-}).join("")
-    
-    
+}).join("") 
  
 }
  
 
 const galleryEl = galleryMaker(galleryItems)
 
-
 const gallery = document.querySelector("div.gallery")
  
- 
-gallery.insertAdjacentHTML('afterbegin', galleryEl)
-
-
+ gallery.insertAdjacentHTML('afterbegin', galleryEl)
 
 gallery.addEventListener("click", onImgClick)
 
@@ -39,16 +33,8 @@ function onImgClick(event) {
     event.preventDefault()
   
     createLightbox(event.target.dataset.source)
-    const lightbox = document.querySelector(".basicLightbox")
-
-    if (lightbox) {
-         window.addEventListener("keydown", onPressEsc)
-    }
-    else {
-        window.removeEventListener("keydown", onPressEsc)
-    }
  
-       
+         window.addEventListener("keydown", onPressEsc)    
     
 }
 
@@ -56,13 +42,9 @@ function createLightbox(image) {
     const instance = basicLightbox.create(`
     <img src = "${image}" width="800" height="600">
   
-`)
-    
-     
+`)    
     instance.show()
 }
-
-
 
 function onPressEsc(event) {
     console.log(event);
