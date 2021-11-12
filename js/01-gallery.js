@@ -13,7 +13,7 @@ return items.map(({ preview, original, description }) => {
       alt="${description}"
     />
   </a>
- 
+  
 </div>`
 
 }).join("") 
@@ -29,6 +29,8 @@ const gallery = document.querySelector("div.gallery")
 
 gallery.addEventListener("click", onImgClick)
 
+
+
 function onImgClick(event) {
     event.preventDefault()
   
@@ -42,7 +44,7 @@ function createLightbox(image) {
     const instance = basicLightbox.create(`
     <img src = "${image}" width="800" height="600">
   
-`)    
+`,)    
     instance.show()
 }
 
@@ -51,8 +53,14 @@ function onPressEsc(event) {
 
     const lightbox = document.querySelector(".basicLightbox")
     if(event.code === 'Escape' && lightbox){
-    lightbox.classList.remove("basicLightbox--visible")
-}
+      lightbox.classList.remove("basicLightbox--visible")
+   onModalClosed()
+    }
+  
+  function onModalClosed() {
+    window.removeEventListener("keydown", onPressEsc)
+    
+  }
 
 }
 //  const instance = basicLightbox.create(`
